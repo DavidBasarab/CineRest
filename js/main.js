@@ -3,14 +3,23 @@ var currentImageId = 0;
 app = {
     initialize: function () {
         var self = this;
-        self.changeImageTimer();
+        $('.dragMe').draggable({
+            revert: true,
+            stack: '.dragMe',
+            cursor: 'move'
+        });
+
+        $('.panel').droppable({
+            hoverClass: '.panel.hovered',
+            drop: handlePanelDrop
+        });
     },
 
     changeImageTimer: function () {
 
-        window.setTimeout(function () {
-            changeSourceImage();
-        }, 100);
+//        window.setTimeout(function () {
+//            changeSourceImage();
+//        }, 100);
     }
 }
 
@@ -19,8 +28,22 @@ app.initialize();
 function changeSourceImage() {
     $('#testImage').attr('src', 'http://192.168.1.58/CineRest/Source/Image/' + currentImageId + '?' + new Date().getTime());
     currentImageId++;
-    if(currentImageId > 5) currentImageId = 0;
+    if (currentImageId > 5) currentImageId = 0;
     window.setTimeout(function () {
         changeSourceImage();
     }, 500);
+}
+
+function handlePanelDrop(event, ui) {
+    var panel = $(this);
+
+    panel.html('');
+
+    var sourceDiv = (ui.draggable).find('.source');
+
+    var sourceId = sourceDiv.attr('id').replace('source', '') - 1;
+
+
+    $('<div style="height: 184px; width: 326px;"><img src="http://192.168.1.58/CineRest/Source/Image/' + sourceId + '" style="width: 100%; height: 100%;"/></div>')
+        .appendTo(panel);
 }

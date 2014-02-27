@@ -3,18 +3,66 @@
     <head>
         <title>CineNet - Web</title>
         <link rel="stylesheet" href="css/style.css"/>
-        <link rel="stylesheet" href="css/jquery.mobile-1.3.0.min.css"/>
     </head>
     <body>
         <script type="text/javascript" src="phonegap.js"></script>
         <script type="text/javascript" src="lib/jquery-1.9.1.min.js"></script>
         <script type="text/javascript" src="lib/jquery.mobile-1.3.0.min.js"></script>
+        <script type="text/javascript" src="lib/jquery-ui.js"></script>
 
-        <div style="height: 100px; width: 100px; float: left;">
-            <img id="testImage" style="width: 100px; height: 100px;"  />
+        <div id="header">
+            CineNet on the Web
         </div>
 
-        <hl>Hello Worm</hl>
+        <div id="assetPane">
+            <div id="assetLibrary">
+                <div class="sourceName">(+) Source List</div>
+                <div >
+                    <ul id="sourceList">
+                        <li class="dragMe">
+                            <div id="source1" class="source">
+                                <img src="http://192.168.1.58/CineRest/Source/Image/0"/>
+                                <span>Source 1</span>
+                            </div>
+                        </li>
+                        <li  class="dragMe">
+                            <div id="source2" class="source">
+                                <img src="http://192.168.1.58/CineRest/Source/Image/1"/>
+                                <span>Source 2</span>
+                            </div>
+                        </li>
+                        <li class="dragMe">
+                            <div id="source3" class="source">
+                                <img src="http://192.168.1.58/CineRest/Source/Image/2"/>
+                                <span>Source 3</span>
+                            </div>
+                        </li>
+                        <li class="dragMe">
+                            <div id="source4" class="source">
+                                <img src="http://192.168.1.58/CineRest/Source/Image/3"/>
+                                Source 4
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div id="content">
+            <div class="videoWall">
+                <div id="panel1" class="panel">
+                </div>
+                <div id="panel3" class="panel">
+                </div>
+                <div id="panel2" class="panel">
+                </div>
+            </div>
+
+        </div>
+
+        <div id="footer">
+            FedEx Project by David Basarab
+        </div>
 
         <script type="text/javascript" src="js/main.js"></script>
     </body>
