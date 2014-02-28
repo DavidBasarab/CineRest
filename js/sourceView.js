@@ -5,6 +5,25 @@ sourceView = {
             type: 'GET',
             success: onSourcesReceived
         });
+
+        $('#sourceTitle').click(onSourcesClicked);
+    }
+}
+
+var sourcesCollapsedText = '(+) Source List';
+var sourcesExpandedText = '(-) Source List';
+
+var sourcesExpanded = true;
+
+function onSourcesClicked() {
+    if (sourcesExpanded) {
+        $('#sourceTitle').html(sourcesCollapsedText);
+        sourcesExpanded = false;
+        $('#sourceContent').slideUp();
+    } else {
+        $('#sourceTitle').html(sourcesExpandedText);
+        sourcesExpanded = true;
+        $('#sourceContent').slideDown();
     }
 }
 
@@ -33,7 +52,7 @@ function refreshImages() {
     });
     window.setTimeout(function () {
         refreshImages();
-    }, 500);
+    }, 1500);
 }
 
 /*

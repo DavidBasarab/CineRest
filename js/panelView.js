@@ -80,7 +80,7 @@ function onGetAllWindowsComplete(windows) {
         onWindowCreated(sourceId, $panel, currentWindow);
     });
 
-    window.setTimeout(monitorPanels, 500);
+    window.setTimeout(monitorPanels, 2000);
 }
 
 function onClearWindowClick() {
