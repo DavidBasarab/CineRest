@@ -52,7 +52,7 @@ function refreshImages() {
     });
     window.setTimeout(function () {
         refreshImages();
-    }, 500);
+    }, 100);
 }
 
 /*
