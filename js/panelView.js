@@ -21,7 +21,7 @@ function monitorPanels() {
         url: 'http://192.168.1.58/CineRest/Wall/Windows',
         type: 'GET',
         success: function (result) {
-            onGetAllWindowsComplete(JSON.parse(result))
+            onGetAllWindowsComplete(result);
         }
     });
 
@@ -80,7 +80,7 @@ function onGetAllWindowsComplete(windows) {
         onWindowCreated(sourceId, $panel, currentWindow);
     });
 
-    window.setTimeout(monitorPanels, 2000);
+    window.setTimeout(monitorPanels, 500);
 }
 
 function onClearWindowClick() {
