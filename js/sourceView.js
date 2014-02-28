@@ -11,7 +11,7 @@ sourceView = {
 function onSourcesReceived(sources) {
     var $mainList = $('#sourceList');
     $.each(sources, function (index, currentSource) {
-        var newListItem = $('<li class="dragMe"><div id="source' + currentSource.SourceId + '" class="source"><img src="http://192.168.1.58/CineRest/Source/' + currentSource.SourceId + '/Image"/><span>' + currentSource.Name + '</span></div></li>');
+        var newListItem = $('<li><div id="source' + currentSource.SourceId + '" class="source dragMe"><img src="http://192.168.1.58/CineRest/Source/' + currentSource.SourceId + '/Image"/><span>' + currentSource.Name + '</span></div></li>');
         $mainList.append(newListItem);
     })
 

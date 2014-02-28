@@ -67,6 +67,10 @@ li:nth-child(even) {
     font-size: 10px;
 }
 
+.controlButtons {
+
+}
+
 #footer {
     clear: both;
     text-align: center;
