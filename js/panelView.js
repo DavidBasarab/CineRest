@@ -1,5 +1,5 @@
 var panelWidth = 1920;
-var panelHeight = 1080;
+var panelHeight = 1200;
 
 panelView = {
     initialize: function () {
