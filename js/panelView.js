@@ -36,8 +36,8 @@ function handlePanelDrop(event, ui) {
 
     var panelNumber = $panel.attr('id').replace('panel', '') - 1;
 
-//    var sourceDiv = (ui.draggable).find('.source');
-    var sourceDiv = (ui.draggable);
+    var sourceDiv = (ui.draggable).find('.source');
+//    var sourceDiv = (ui.draggable);
 
     var sourceId = sourceDiv.attr('id').replace('source', '');
 
