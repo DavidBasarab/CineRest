@@ -11,18 +11,87 @@ panelView = {
             hoverClass: '.panel.hovered',
             drop: handlePanelDrop
         });
+
+        monitorPanels();
     }
+}
+
+function monitorPanels() {
+    $.ajax({
+        url: 'http://192.168.1.58/CineRest/Wall/Windows',
+        type: 'GET',
+        success: function (result) {
+            onGetAllWindowsComplete(JSON.parse(result))
+        }
+    });
+
+}
+
+function arraysEqual(a, b) {
+    if (a === b) return true;
+    if (a == null || b == null) return false;
+    if (a.length != b.length) return false;
+
+    // If you don't care about the order of the elements inside
+    // the array, you should sort both arrays here.
+
+    for (var i = 0; i < a.length; ++i) {
+        if (JSON.stringify(a[i]) !== JSON.stringify(b[i])) return false;
+    }
+    return true;
+}
+
+var previousWindowsResult = null;
+
+function onGetAllWindowsComplete(windows) {
+    if (windows == null || windows.length == 0) {
+        clearAllWindows();
+    }
+
+    if (previousWindowsResult == null) {
+        previousWindowsResult = windows;
+    } else if (arraysEqual(previousWindowsResult, windows)) {
+
+        window.setTimeout(monitorPanels, 500);
+
+        return;
+    }
+
+    previousWindowsResult = windows;
+
+    clearAllWindows();
+
+    $.each(windows, function (index, currentWindow) {
+        var sourceId = currentWindow.SourceId;
+        var xPosition = currentWindow.X;
+
+        var $panel = null;
+
+        if (xPosition >= getXCoordinate(0) && xPosition < getXCoordinate(1)) {
+            $panel = $('#panel1');
+        } else if (xPosition >= getXCoordinate(1) && xPosition < getXCoordinate(2)) {
+            $panel = $('#panel2');
+        } else {
+            $panel = $('#panel3');
+        }
+
+        $panel.html('');
+
+        onWindowCreated(sourceId, $panel, currentWindow);
+    });
+
+    window.setTimeout(monitorPanels, 500);
 }
 
 function onClearWindowClick() {
     $.ajax({
         url: 'http://192.168.1.58/CineRest/Wall/Windows',
         type: 'DELETE',
-        success: onWindowsClear
+        success: clearAllWindows
     });
 }
 
-function onWindowsClear() {
+function clearAllWindows() {
     var panels = $('.panel');
 
     $.each(panels, function (index, currentPanel) {
