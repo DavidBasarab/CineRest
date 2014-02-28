@@ -83,6 +83,7 @@ li:nth-child(even) {
 .populatedPanel {
     height: 130px;
     width: 230px;
+    z-index: 99999;
 }
 
 .panel {
