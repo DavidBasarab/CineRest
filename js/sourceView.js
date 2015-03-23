@@ -1,12 +1,7 @@
 sourceView = {
     initialize: function () {
-        $.ajax({
-            url: 'http://192.168.1.58/CineRest/Sources',
-            type: 'GET',
-            success: onSourcesReceived
-        });
 
-        $('#sourceTitle').click(onSourcesClicked);
+        $('#header').html('Can I change the Header?');
     }
 }
 

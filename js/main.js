@@ -2,11 +2,11 @@
 app = {
     initialize: function () {
 
-        startTouchHandler();
+        //startTouchHandler();
 
         sourceView.initialize();
 
-        panelView.initialize();
+        //panelView.initialize();
     }
 }
 
