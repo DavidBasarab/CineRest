@@ -2,7 +2,27 @@ sourceView = {
     initialize: function () {
 
         $('#header').html('Can I change the Header?');
+
+        getWorkspaces();
     }
+}
+
+function getServer() {
+    return 'http://192.168.1.125/DBasarabCinRestService';
+}
+
+function getWorkspaces() {
+    $.ajax({
+        url: getServer() + '/Workspace',
+        type: 'GET',
+        success: function(data) {
+            $('#sourceTitle').html(JSON.stringify(data));
+            //$('.workspaceSelect').change();
+        },
+        error: function(xhr) {
+            alert('xhr.Status = ' + xhr.status);
+        }
+    });
 }
 
 var sourcesCollapsedText = '(+) Source List';
@@ -80,4 +100,3 @@ function refreshImages() {
 
 
  */
-
