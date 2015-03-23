@@ -18,10 +18,14 @@ html {
     margin: 10px;
 }
 
-#content {
+.main_content {
     height: 500px;
     float: left;
     width: 80%;
+}
+
+#genericDiv {
+
 }
 
 .sourceName {
